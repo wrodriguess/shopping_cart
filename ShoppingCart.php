@@ -48,4 +48,20 @@ class ShoppingCart
 
         return $total;
     }
+
+    public function listProducts(): array
+    {
+        $products = [];
+
+        foreach ($this->items as $item) {
+            $products[] = $item->listProduct();
+        }
+
+        return $products;
+    }
+
+    public function changeQuantity($itemPosition, $newQuantity): void
+    {
+        $this->items[$itemPosition]->changeQuantity($newQuantity);
+    }
 }
